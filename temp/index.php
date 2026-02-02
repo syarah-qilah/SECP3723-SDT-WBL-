@@ -1,1 +1,0 @@
-Syarah Aqilah binti Ya'acob 
