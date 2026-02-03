@@ -1,23 +1,24 @@
 <?php
-  include 'header.php';
+session_start();
 
+// If logged in, redirect to appropriate dashboard
+if (isset($_SESSION['username'])) {
+    switch ($_SESSION['user_role']) {
+        case 'Student':
+            header("Location: student/dashboard.php");
+            break;
+        case 'Lecturer':
+            header("Location: lecturer/dashboard.php");
+            break;
+        case 'Admin':
+            header("Location: admin/dashboard.php");
+            break;
+        default:
+            header("Location: auth/login.php");
+    }
+} else {
+    // Not logged in - redirect to login
+    header("Location: auth/login.php");
+}
+exit();
 ?>
-
-<div class="container">
-
-  <div class = "jumbotron">
-    <h1 class="display-3">Student Management System </h1>
-    <p class= "lead">Hello World!</p>
-    <img src="utm.JPG" alt="Sanjungan Bangsa" width="500" height="333">
-    <hr class= "my-4">
-    <p>For the first time user, please register. Thanks ^-^</p>
-    <p class="lead">
-      <a class="btn btn-primary  btn-lg" href="#" role="button">Learn more</a>
-    <p>
-</div>
-
-</div>
-
-<?php 
-  include 'footer.php';
-  ?>
