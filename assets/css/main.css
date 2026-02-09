@@ -1,0 +1,354 @@
+/* =========================================
+   SMS - CORE GLOBAL STYLES (main.css)
+   ========================================= */
+
+:root {
+    /* --- COLOR PALETTE --- */
+    --bg-dark: #0f111a;          /* Deep Void */
+    --bg-sidebar: #15192b;       /* Sidebar Navy */
+    --card-bg: rgba(30, 34, 53, 0.7); /* Glassy Card */
+    
+    /* --- NEON ACCENTS --- */
+    --primary: #7c3aed;          /* Electric Purple */
+    --secondary: #00d2ff;        /* Cyan Blue */
+    --accent-pink: #f472b6;      /* Neon Pink */
+    
+    /* --- GRADIENTS --- */
+    --neon-gradient: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+    --glass-shine: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+    
+    /* --- TEXT --- */
+    --text-main: #ffffff;
+    --text-muted: #94a3b8;
+    
+    /* --- UTILS --- */
+    --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+    --shadow-glow: 0 0 20px rgba(124, 58, 237, 0.15);
+    --radius: 16px;
+    
+    /* --- STATUS COLORS --- */
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+}
+
+/* =========================================
+   1. GLOBAL RESET & TYPOGRAPHY
+   ========================================= */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background-color: var(--bg-dark);
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(124, 58, 237, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(0, 210, 255, 0.08) 0%, transparent 20%);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+/* =========================================
+   2. LAYOUT (Sidebar & Main Content)
+   ========================================= */
+.dashboard-wrapper { display: flex; min-height: 100vh; }
+
+.main-content {
+    flex: 1;
+    margin-left: 280px; /* Matches Sidebar Width */
+    padding: 2rem;
+    width: calc(100% - 280px);
+}
+
+/* SIDEBAR STYLES */
+.sidebar {
+    width: 280px;
+    height: 100vh;
+    background: #0f0f1a;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 25px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.sidebar-top { flex-grow: 1; }
+
+.sidebar-header { display: flex; align-items: center; gap: 15px; margin-bottom: 40px; }
+.sidebar-header h2 { color: white; font-size: 1.5rem; font-weight: 700; margin: 0; }
+.sidebar-header p { color: #888; font-size: 0.8rem; margin: 0; }
+
+.brand-icon {
+    width: 45px; height: 45px;
+    background: linear-gradient(135deg, #7c3aed, #3b82f6);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 1.2rem;
+}
+
+.menu-item {
+    display: flex; align-items: center;
+    padding: 12px 15px; margin-bottom: 8px;
+    color: #a0aec0; text-decoration: none;
+    border-radius: 12px; transition: all 0.3s ease;
+}
+
+.menu-item-icon { margin-right: 12px; width: 24px; text-align: center; }
+
+.menu-item.active, .menu-item:hover {
+    background: linear-gradient(90deg, rgba(124, 58, 237, 0.1), transparent);
+    border-left: 3px solid #8b5cf6;
+    color: white;
+}
+
+/* SIDEBAR FOOTER */
+.sidebar-footer {
+    margin-top: 20px; padding-top: 20px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.mini-info-box {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px; padding: 10px 15px; margin-bottom: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.mini-info-box label { display: block; font-size: 0.7rem; color: #666; margin-bottom: 2px; }
+.mini-info-box .value { font-size: 0.85rem; color: #e2e8f0; font-weight: 500; }
+
+.btn-sidebar-logout {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    width: 100%; padding: 12px; margin-top: 15px;
+    background: rgba(239, 68, 68, 0.15); color: #fca5a5;
+    border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+.btn-sidebar-logout:hover { background: #ef4444; color: white; }
+
+/* =========================================
+   3. COMPONENTS (Buttons, Forms, Topbar)
+   ========================================= */
+/* Topbar */
+.topbar {
+    background: var(--card-bg); backdrop-filter: blur(10px);
+    border: var(--glass-border); border-radius: var(--radius);
+    padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 2rem; box-shadow: var(--shadow-glow);
+}
+.user-profile { display: flex; align-items: center; gap: 15px; }
+.user-avatar {
+    width: 45px; height: 45px; border-radius: 50%;
+    background: var(--neon-gradient);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold; color: white; border: 2px solid rgba(255,255,255,0.2);
+}
+
+/* Forms */
+.form-control {
+    width: 100%; background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.8rem 1rem; border-radius: 8px; color: white;
+}
+.form-control:focus { outline: none; border-color: var(--primary); }
+
+/* Buttons */
+.btn {
+    padding: 0.6rem 1.2rem; border-radius: 8px; border: none;
+    cursor: pointer; font-weight: 600; transition: 0.3s;
+    display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+}
+.btn-primary { background: var(--neon-gradient); color: white; }
+.btn-tertiary { 
+    background: linear-gradient(90deg, #06b6d4, #3b82f6); 
+    color: white; padding: 10px 20px; border-radius: 50px; 
+}
+
+/* Badges */
+.badge { padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
+.badge-success { background: rgba(16, 185, 129, 0.2); color: var(--success); border: 1px solid var(--success); }
+.badge-warning { background: rgba(245, 158, 11, 0.2); color: var(--warning); border: 1px solid var(--warning); }
+
+/*login page styles*/
+.login-header {
+    margin-bottom: 2rem;
+}
+
+.logo-circle {
+    width: 70px;
+    height: 70px;
+    background: var(--neon-gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem auto;
+    font-size: 2rem;
+    color: white;
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
+}
+
+.login-header h2 {
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+}
+
+.login-header p {
+    color: var(--text-muted);
+}
+
+/* Input Fields with Icons */
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+.input-icon-wrapper {
+    position: relative;
+}
+
+.input-icon-wrapper i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    transition: 0.3s;
+}
+
+.input-icon-wrapper input {
+    padding-left: 45px; 
+}
+
+.input-icon-wrapper input:focus + i,
+.input-icon-wrapper input:focus ~ i {
+    color: var(--primary);
+}
+
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+}
+
+
+.login-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px); /* Stronger blur for login */
+    -webkit-backdrop-filter: blur(20px);
+    border: var(--glass-border);
+    padding: 3rem;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    text-align: center;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Header Styling */
+.login-header {
+    margin-bottom: 2rem;
+}
+
+.logo-circle {
+    width: 70px;
+    height: 70px;
+    background: var(--neon-gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem auto;
+    font-size: 2rem;
+    color: white;
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
+}
+
+.login-header h2 {
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+}
+
+.login-header p {
+    color: var(--text-muted);
+}
+
+.login-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 1rem;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+/* Footer & Demo Box */
+.login-footer {
+    margin-top: 2rem;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+
+.demo-box {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(15, 23, 42, 0.9);
+    border: var(--glass-border);
+    padding: 1.5rem;
+    border-radius: 16px;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    min-width: 250px;
+}
+
+.demo-box h4 {
+    margin-bottom: 1rem;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.demo-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.demo-item span:last-child {
+    font-family: monospace;
+    color: var(--text-main);
+}
+
+/* Simple Animation */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+

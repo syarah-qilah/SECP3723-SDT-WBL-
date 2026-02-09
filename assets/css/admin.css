@@ -1,0 +1,942 @@
+/* =========================================
+   SMS - ADMIN MODULE STYLES (Glassmorphism)
+   ========================================= */
+
+/* 1. ROOT VARIABLES (The "Theme" Colors) */
+:root {
+    /* Backgrounds */
+    --main-bg: #0f172a;           /* Deep dark blue */
+    --card-bg: rgba(30, 41, 59, 0.4); /* Translucent dark blue */
+    
+    /* Text */
+    --text-main: #f1f5f9;         /* Off-white */
+    --text-muted: #94a3b8;        /* Greyish blue */
+    
+    /* Borders & Glass Effects */
+    --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+    --glass-shine: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+    --radius: 16px;
+    
+    /* Brand Colors (Neon) */
+    --primary: #8b5cf6;           /* Violet */
+    --neon-gradient: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%); /* Purple to Blue */
+    
+    /* Status Colors */
+    --success: #10b981;           /* Green */
+    --warning: #f59e0b;           /* Amber */
+    --danger: #ef4444;            /* Red */
+    --info: #3b82f6;              /* Blue */
+}
+
+/* Global Resets */
+body {
+    background-color: var(--main-bg);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif; /* Or your preferred font */
+}
+
+a { text-decoration: none; }
+
+/* =========================================
+   2. LAYOUT & TOPBAR
+   ========================================= */
+.main-content {
+    padding: 2rem;
+    margin-left: 250px; /* Adjust based on your sidebar width */
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2.5rem;
+}
+
+.topbar h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+    background: linear-gradient(to right, #fff, #a5b4fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* =========================================
+   3. DASHBOARD STAT CARDS
+   ========================================= */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.stat-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: var(--glass-border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--glass-shine);
+    pointer-events: none;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border-color: rgba(255,255,255,0.2);
+}
+
+.stat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.stat-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.stat-value {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text-main);
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.stat-description {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+}
+
+/* Icon Colors */
+.stat-card.success .stat-icon { color: var(--success); }
+.stat-card.warning .stat-icon { color: var(--warning); }
+.stat-card.info .stat-icon { color: var(--info); }
+.stat-card.danger .stat-icon { color: var(--danger); }
+
+/* =========================================
+   4. CONTENT CARDS
+   ========================================= */
+.content-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    border: var(--glass-border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: var(--glass-border);
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* =========================================
+   5. TABLES (ADMIN STYLE)
+   ========================================= */
+.table-responsive {
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 0.5rem; /* Creates gap between rows */
+}
+
+.data-table th {
+    text-align: left;
+    padding: 1rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.data-table td {
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    vertical-align: middle;
+    border-top: 1px solid rgba(255,255,255,0.02);
+    border-bottom: 1px solid rgba(255,255,255,0.02);
+}
+
+/* Rounded Corners for Rows */
+.data-table tr td:first-child { 
+    border-top-left-radius: 12px; 
+    border-bottom-left-radius: 12px; 
+    border-left: 1px solid rgba(255,255,255,0.02);
+}
+.data-table tr td:last-child { 
+    border-top-right-radius: 12px; 
+    border-bottom-right-radius: 12px; 
+    border-right: 1px solid rgba(255,255,255,0.02);
+}
+
+.data-table tr:hover td {
+    background: rgba(255, 255, 255, 0.06);
+    cursor: default;
+}
+
+/* Course Icon Box */
+.course-icon-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+/* =========================================
+   6. FORMS & INPUTS
+   ========================================= */
+.form-control {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.7rem 1rem;
+    border-radius: 50px; /* Fully rounded for search bars */
+    color: white;
+    transition: 0.3s;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 15px rgba(124, 58, 237, 0.2);
+    background: rgba(0,0,0,0.3);
+}
+
+/* Custom Glass Select Dropdown */
+.glass-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+    padding: 0.7rem 2.5rem 0.7rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    /* Custom Arrow SVG */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 14px;
+}
+
+.glass-select:focus, .glass-select:hover {
+    border-color: var(--primary);
+    color: white;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.glass-select option {
+    background-color: #1e293b; /* Solid dark color for dropdown options */
+    color: white;
+}
+
+/* =========================================
+   7. BUTTONS & BADGES
+   ========================================= */
+.btn {
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.btn-primary {
+    background: var(--neon-gradient);
+    color: white;
+    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(124, 58, 237, 0.6);
+}
+
+.btn-tertiary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.btn-tertiary:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Badges */
+.badge {
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.badge-success { background: rgba(16, 185, 129, 0.2); color: var(--success); border: 1px solid rgba(16, 185, 129, 0.4); }
+.badge-warning { background: rgba(245, 158, 11, 0.2); color: var(--warning); border: 1px solid rgba(245, 158, 11, 0.4); }
+.badge-danger { background: rgba(239, 68, 68, 0.2); color: var(--danger); border: 1px solid rgba(239, 68, 68, 0.4); }
+
+/* =========================================
+   8. ENROLLMENT BARS (ADMIN SPECIFIC)
+   ========================================= */
+.seat-progress {
+    height: 6px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 10px;
+}
+
+.seats-available { background: var(--success); box-shadow: 0 0 10px rgba(16,185,129,0.4); }
+.seats-warning { background: var(--warning); box-shadow: 0 0 10px rgba(245,158,11,0.4); }
+.seats-full { background: var(--danger); box-shadow: 0 0 10px rgba(239,68,68,0.4); }
+
+/* =========================================
+   9. MODAL POPUP STYLES
+   ========================================= */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Dark dimmed background */
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-wrapper {
+    background: #11111f; /* Very dark blue/black background */
+    width: 100%;
+    max-width: 500px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+    
+    /* The Purple Top Glow Line */
+    border-top: 3px solid #8b5cf6; 
+}
+
+.modal-overlay.active .modal-wrapper {
+    transform: translateY(0);
+}
+
+.modal-header {
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: #e2e8f0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.close-modal-btn {
+    background: rgba(255,255,255,0.05);
+    border: none;
+    color: #ef4444; /* Red X */
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: 0.2s;
+}
+
+.close-modal-btn:hover {
+    background: rgba(239, 68, 68, 0.2);
+}
+
+.modal-body {
+    padding: 0 25px 20px;
+}
+
+/* Form Layout */
+.form-group { margin-bottom: 15px; }
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.form-group label {
+    display: block;
+    color: #94a3b8;
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+}
+
+/* Dark Inputs specifically for Modal */
+.form-control-dark {
+    width: 100%;
+    background: rgba(20, 20, 35, 1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px 15px;
+    border-radius: 8px;
+    color: white;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.form-control-dark:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
+}
+
+.modal-footer {
+    padding: 20px 25px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+/* Modal Buttons */
+.btn-block {
+    padding: 10px 20px;
+    flex: 1;
+    justify-content: center;
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #94a3b8;
+}
+
+.btn-secondary:hover {
+    background: rgba(255,255,255,0.05);
+    color: white;
+}
+
+/* ========================
+   REGISTRATION PAGE STYLES
+   ======================== */
+
+/* Status Badges */
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.status-approved {
+    background: rgba(16, 185, 129, 0.15); /* Green tint */
+    color: #34d399; /* Green text */
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.status-cancelled {
+    background: rgba(239, 68, 68, 0.15); /* Red tint */
+    color: #fca5a5; /* Red text */
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.status-pending {
+    background: rgba(245, 158, 11, 0.15); /* Orange tint */
+    color: #fbbf24; /* Orange text */
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+/* Action Buttons for Registration */
+.btn-action-cancel {
+    background: transparent;
+    border: 1px solid #ef4444;
+    color: #ef4444;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-action-cancel:hover {
+    background: #ef4444;
+    color: white;
+}
+
+.btn-action-approve {
+    background: transparent;
+    border: 1px solid #10b981;
+    color: #10b981;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-action-approve:hover {
+    background: #10b981;
+    color: white;
+}
+
+/* User Info Styling in Table */
+.user-info, .course-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.4;
+}
+
+/* Specific Styles for Admin Student Management */
+.avatar-circle {
+    width: 45px; 
+    height: 45px; 
+    border-radius: 50%;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    font-weight: bold; 
+    color: white; 
+    font-size: 0.9rem;
+}
+
+.gradient-1 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+.gradient-2 { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%); }
+.gradient-3 { background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); }
+
+.badge-purple {
+    background: rgba(124, 58, 237, 0.15);
+    color: #a78bfa;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    border: 1px solid rgba(124, 58, 237, 0.3);
+}
+
+.btn-view-details {
+    display: inline-block;
+    padding: 6px 16px;
+    background: linear-gradient(90deg, #4f46e5 0%, #7c3aed 100%);
+    color: white;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(124, 58, 237, 0.2);
+    transition: transform 0.2s;
+}
+
+.btn-view-details:hover {
+    transform: translateY(-2px);
+    color: white;
+    box-shadow: 0 6px 12px rgba(124, 58, 237, 0.4);
+}
+
+/* --- Student Profile Details Page --- */
+
+.profile-card {
+    background: #1f2937; /* Dark card bg */
+    border-radius: 16px;
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.gradient-hero {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    width: 100px; 
+    height: 100px;
+    border-radius: 20px;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    box-shadow: 0 10px 20px rgba(245, 87, 108, 0.3);
+}
+
+.profile-info-main h2 { 
+    margin: 0 0 10px 0; 
+    font-size: 1.8rem; 
+    color: white; 
+}
+
+.profile-badges { 
+    display: flex; 
+    gap: 10px; 
+}
+
+.id-badge, .dept-badge {
+    font-size: 0.9rem; 
+    color: #9ca3af; 
+    display: flex; 
+    align-items: center; 
+    gap: 6px;
+}
+
+.id-badge i { color: #d946ef; } /* Pinkish icon */
+.dept-badge i { color: #2dd4bf; } /* Teal icon */
+
+.profile-info-contact {
+    margin-left: auto; /* Push to right */
+    display: flex; 
+    gap: 30px;
+}
+
+.contact-item { 
+    display: flex; 
+    gap: 12px; 
+    align-items: center; 
+}
+
+.contact-item i {
+    width: 40px; 
+    height: 40px; 
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    color: #60a5fa;
+}
+
+.contact-item label { 
+    display: block; 
+    font-size: 0.75rem; 
+    color: #6b7280; 
+    text-transform: uppercase; 
+    letter-spacing: 0.5px; 
+}
+
+.contact-item span { 
+    color: #e5e7eb; 
+    font-size: 0.95rem; 
+}
+
+/* Section Title with accent */
+.section-title {
+    font-size: 1.2rem; 
+    color: #e5e7eb; 
+    margin-bottom: 15px;
+    padding-left: 15px; 
+    border-left: 4px solid #2dd4bf;
+}
+
+/* Empty State */
+.empty-state { 
+    text-align: center; 
+    color: #6b7280; 
+}
+
+.empty-icon {
+    font-size: 3rem; 
+    color: #374151;
+    background: rgba(255,255,255,0.02);
+    width: 80px; 
+    height: 80px; 
+    margin: 0 auto 15px auto;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    border-radius: 20px;
+}
+/* ========================
+   MODAL LAYOUT EXTENSIONS
+   ======================== */
+
+/* Make the modal wider for the form */
+.modal-wrapper.modal-lg {
+    max-width: 600px;
+    width: 90%;
+}
+
+/* Two Column Grid */
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 0;
+}
+
+.col-half {
+    flex: 1;
+}
+
+/* ========================
+   CREDENTIALS BOX STYLING
+   ======================== */
+
+.credentials-box {
+    background: rgba(30, 27, 75, 0.6); /* Dark purple background */
+    border: 1px solid rgba(124, 58, 237, 0.3); /* Thin purple border */
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.cred-header {
+    color: #e5e7eb;
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+}
+.cred-header i { color: #fbbf24; /* Gold lock icon */ }
+
+.cred-item {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+}
+
+.cred-label {
+    color: #9ca3af; /* Muted grey text */
+    display: inline-block;
+    width: 80px;
+}
+
+.cred-value {
+    color: #a78bfa; /* Light purple text */
+    font-weight: 500;
+}
+
+.code-font {
+    font-family: 'Courier New', monospace; /* Monospace for password */
+    letter-spacing: 1px;
+}
+
+.cred-warning {
+    font-size: 0.8rem;
+    color: #fbbf24; /* Yellow warning text */
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+}
+/* ========================
+   LECTURER SPECIFIC STYLES
+   ======================== */
+
+/* Blue Gradient for Avatar */
+.gradient-blue { 
+    background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%); 
+}
+
+/* Blue Badge for IDs */
+.badge-blue {
+    background: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+/* Hero Icon Background for Details Page */
+.gradient-blue-hero {
+    background: linear-gradient(135deg, #3b82f6 0%, #2dd4bf 100%);
+    box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+}
+/* ========================
+   DETAILS PAGE STYLES
+   ======================== */
+
+/* Back Button Style */
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #94a3b8;
+    background: rgba(30, 41, 59, 0.5);
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+.btn-back:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Main Profile Card */
+.detail-header-card {
+    background: #1e293b; /* Dark card background */
+    border-radius: 16px;
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Large Avatar */
+.detail-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: white;
+    flex-shrink: 0;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Lecturer Theme (Teal/Green Gradient) */
+.gradient-teal {
+    background: linear-gradient(135deg, #10b981 0%, #0ea5e9 100%);
+}
+
+/* Info Section */
+.detail-info {
+    flex-grow: 1;
+}
+
+.detail-name {
+    margin: 0 0 20px 0;
+    color: white;
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+
+/* Grid for Email, Phone, Dept */
+.detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icon-box {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: rgba(148, 163, 184, 0.1); /* Subtle background for icon */
+    color: #38bdf8; /* Light Blue Icon Color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+}
+
+/* Text Labels */
+.detail-item .label {
+    display: block;
+    font-size: 0.75rem;
+    color: #64748b; /* Muted text */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+.detail-item .value {
+    display: block;
+    color: #e2e8f0; /* Bright text */
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+/* Section Title Decoration */
+.section-title-border {
+    font-size: 1.25rem;
+    color: white;
+    border-left: 4px solid #10b981; /* Green accent line */
+    padding-left: 12px;
+    margin-bottom: 0;
+}
+
+/* Utility for Purple Text (Course Code) */
+.text-purple { color: #a78bfa !important; }
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .detail-header-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+    .detail-grid {
+        grid-template-columns: 1fr; /* Stack vertically on mobile */
+        text-align: left;
+    }
+}
