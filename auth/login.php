@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - EduManage</title>
+    <title>Login - Student Management System</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/main.css">
@@ -114,22 +114,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </form>
             
             <div class="login-footer">
-                <p>&copy; 2026 EduManage System</p>
+                <p>&copy; 2026 Student Management System</p>
             </div>
         </div>
     </div>
 
-    <div class="demo-box" style="position: fixed; bottom: 20px; right: 20px; background: white; padding: 15px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-        <h4><i class="fas fa-key"></i> Test Accounts</h4>
-        <div class="demo-item">
-            <span class="badge badge-warning" style="background:orange; color:white; padding:2px 5px; border-radius:4px;">Student</span> 
-            <span>A20EC0001 / (YourHash)</span>
-        </div>
-        <div class="demo-item">
-            <span class="badge badge-info" style="background:blue; color:white; padding:2px 5px; border-radius:4px;">Lecturer</span> 
-            <span>lect001 / (YourHash)</span>
-        </div>
-    </div>
+
 
 </body>
 </html>
