@@ -9,7 +9,8 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <link rel="stylesheet" href="/smsCopy/assets/css/main.css">
+    <!-- Changed to relative path -->
+    <link rel="stylesheet" href="../assets/css/main.css">
 
     <?php
         // Get the current URL path
@@ -17,15 +18,15 @@
 
         // Check: Is the user inside the 'student' folder?
         if (strpos($current_url, '/student/') !== false) {
-            echo '<link rel="stylesheet" href="/smsCopy/assets/css/student.css">';
+            echo '<link rel="stylesheet" href="../assets/css/student.css">';
         } 
         // Check: Is the user inside the 'lecturer' folder?
         elseif (strpos($current_url, '/lecturer/') !== false) {
-            echo '<link rel="stylesheet" href="/smsCopy/assets/css/lecturer.css">';
+            echo '<link rel="stylesheet" href="../assets/css/lecturer.css">';
         }
         // Check: Is the user inside the 'admin' folder?
         elseif (strpos($current_url, '/admin/') !== false) {
-            echo '<link rel="stylesheet" href="/smsCopy/assets/css/admin.css">';
+            echo '<link rel="stylesheet" href="../assets/css/admin.css">';
         }
     ?>
 
