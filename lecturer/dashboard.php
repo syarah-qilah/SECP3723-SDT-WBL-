@@ -26,14 +26,6 @@ $res_total_stu = mysqli_query($conn, "SELECT COUNT(r.regisID) as count
     WHERE cl.lectID = '$lect_id' AND r.regisStat = 'Approved'");
 $count_total_students = mysqli_fetch_assoc($res_total_stu)['count'];
 
-// 4. STAT: Pending Approvals (For Notification)
-$res_pending = mysqli_query($conn, "SELECT COUNT(r.regisID) as count 
-    FROM Registration r 
-    JOIN course_lecturer cl ON r.c_code = cl.c_code 
-    WHERE cl.lectID = '$lect_id' AND r.regisStat = 'Pending'");
-$count_pending = mysqli_fetch_assoc($res_pending)['count'];
-
-// 5. FETCH MY ASSIGNED CLASSES (Limit 5 for dashboard view)
 $sql_classes = "SELECT c.c_code, c.c_name, c.section, c.max_student,
                 (SELECT COUNT(*) FROM Registration WHERE c_code = c.c_code AND regisStat = 'Approved') as current_enrollment
                 FROM Course c
@@ -56,16 +48,6 @@ include '../includes/header.php';
             <p class="text mb-0"><?php echo $current_semester_label; ?> • Status: <strong style="color: #10b981;">Active</strong></p>
         </div>
         
-        <div class="topbar-right">
-            <div class="notification-bell" style="position: relative; cursor: pointer;">
-                <i class="fas fa-bell fa-lg text-white"></i>
-                <?php if($count_pending > 0): ?>
-                    <span style="position: absolute; top: -5px; right: -5px; background: #ef4444; color: white; border-radius: 50%; width: 18px; height: 18px; font-size: 11px; display: flex; align-items: center; justify-content: center; font-weight: bold;">
-                        <?php echo $count_pending; ?>
-                    </span>
-                <?php endif; ?>
-            </div>
-        </div>
     </div>
 
     <div class="dashboard-grid mb-4">

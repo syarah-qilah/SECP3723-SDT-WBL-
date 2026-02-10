@@ -73,7 +73,7 @@ include 'sidebar.php';
     <div class="content-card">
         
         <div class="card-header" style="flex-wrap: wrap; gap: 15px;">
-            <h2 class="card-title">Active Curriculum</h2>
+            <h2 class="card-title">Active Courses</h2>
             
             <div style="display: flex; gap: 10px; flex-grow: 1; justify-content: flex-end;">
                 <input type="text" id="searchInput" onkeyup="searchTable()" class="form-control" placeholder="Search by code or name..." style="max-width: 300px;">

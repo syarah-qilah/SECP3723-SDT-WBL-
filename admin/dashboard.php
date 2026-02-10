@@ -48,12 +48,7 @@ include 'sidebar.php';
             <h1>Admin Dashboard 🚀</h1>
             <p class="text mb-0">Welcome back, <strong style="color: var(--secondary);"><?php echo $_SESSION['name']; ?></strong></p>
         </div>
-        <div class="topbar-right">
-            <div style="text-align: right; color: #aaa; font-size: 0.9rem;">
-                <div><?php echo date('l, d M Y'); ?></div>
-                <div style="font-weight: bold; color: #fff;"><?php echo date('h:i A'); ?></div>
-            </div>
-        </div>
+    
     </div>
 
     <div class="row mb-4">

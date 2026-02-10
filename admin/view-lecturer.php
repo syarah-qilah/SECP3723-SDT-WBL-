@@ -69,15 +69,15 @@ include 'sidebar.php';
 
                 <div class="text-start px-3">
                     <div class="mb-3">
-                        <label class="small text-muted d-block text-uppercase">Department</label>
+                        <label class="small text d-block text-uppercase">Department</label>
                         <div class="text-white"><?php echo $lecturer['department']; ?></div>
                     </div>
                     <div class="mb-3">
-                        <label class="small text-muted d-block text-uppercase">Office Location</label>
+                        <label class="small text d-block text-uppercase">Office Location</label>
                         <div class="text-white"><?php echo $lecturer['office_room'] ?? 'Not Assigned'; ?></div>
                     </div>
                     <div class="mb-3">
-                        <label class="small text-muted d-block text-uppercase">Email</label>
+                        <label class="small text d-block text-uppercase">Email</label>
                         <div class="text-white"><?php echo $lecturer['email']; ?></div>
                     </div>
                 </div>
@@ -107,7 +107,7 @@ include 'sidebar.php';
                                         <td><span class="badge" style="background: rgba(255,255,255,0.1); color: #fff;"><?php echo $row['c_code']; ?></span></td>
                                         <td class="text-white"><?php echo $row['c_name']; ?></td>
                                         <td>
-                                            <i class="fas fa-user-graduate text-muted me-2"></i> <?php echo $row['student_count']; ?>
+                                            <i class="fas fa-user-graduate text me-2"></i> <?php echo $row['student_count']; ?>
                                         </td>
                                         <td><?php echo $row['academic_session']; ?> (Sem <?php echo $row['semester']; ?>)</td>
                                     </tr>
@@ -116,7 +116,7 @@ include 'sidebar.php';
                                 <tr>
                                     <td colspan="4" class="text-center py-5">
                                         <div style="color: #555; font-size: 3rem; margin-bottom: 10px;"><i class="fas fa-folder-open"></i></div>
-                                        <p class="text-muted">No courses assigned yet.</p>
+                                        <p class="text">No courses assigned yet.</p>
                                     </td>
                                 </tr>
                             <?php endif; ?>

@@ -69,7 +69,7 @@ include '../includes/header.php';
     <div class="topbar">
         <div class="topbar-left">
             <h1>Assigned Courses 📚</h1>
-            <p class="text mb-0">Manage teaching loads and student rosters</p>
+            <p class="text mb-0">View assigned courses and student lists</p>
         </div>
     </div>
 
