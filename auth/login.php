@@ -1,7 +1,6 @@
 <?php
 session_start();
-// Adjust these paths if your file is in a subfolder. 
-// Assuming login.php is in the root folder based on your upload.
+require_once '../includes/header.php';
 require_once '../config/database.php';
 require_once '../includes/security.php';
 
@@ -9,26 +8,23 @@ $error = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
-    // 1. Sanitize Input
-    // We use 'username' here because that matches your database column
+   
     $username = sanitize_input($_POST['username'], $conn);
     $password = $_POST['password'];
 
-    // 2. Query the Main USER Table
-    // Your PDF confirms the column is 'username' and status is 'Active'
     $sql = "SELECT * FROM User WHERE username = '$username' AND status = 'Active'";
     $result = mysqli_query($conn, $sql);
 
     if ($row = mysqli_fetch_assoc($result)) {
-        // 3. Verify Password
+       
         if (verify_password($password, $row['password_hash'])) {
             
-            // Set Base Session Variables
+           
             $_SESSION['username'] = $row['username'];
             $_SESSION['role'] = $row['role'];
             $_SESSION['name'] = $row['name'];
 
-            // 4. ROLE SPECIFIC LOOKUP
+      
             if ($row['role'] == 'Student') {
                 $stu_sql = "SELECT matricno FROM Student WHERE username = '$username'";
                 $stu_res = mysqli_query($conn, $stu_sql);

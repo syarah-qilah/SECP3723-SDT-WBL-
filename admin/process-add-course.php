@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $lect_id = mysqli_real_escape_string($conn, $_POST['lecturer']);
 
     // 1. Insert into Course Table
-    // Note: Ensure your Course table has 'day_time' column. If not, run SQL to add it.
+  
     $sql = "INSERT INTO Course (c_code, c_name, semester, c_credit, max_student, day_time, section, academic_session) 
             VALUES ('$code', '$name', $sem, $credits, $max, '$schedule', '01', '2025/2026')";
 

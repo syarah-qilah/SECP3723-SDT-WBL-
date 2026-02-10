@@ -11,9 +11,9 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'Admin') {
 
 $activePage = 'lecturers'; 
 
-// 2. AUTO-GENERATE ID (e.g. L25001)
-$current_year = date('y'); // "25"
-$prefix = "L" . $current_year; // "L25"
+// 2. AUTO-GENERATE ID 
+$current_year = date('y');
+$prefix = "L" . $current_year; 
 
 $check_sql = "SELECT lectID FROM Lecturer WHERE lectID LIKE '$prefix%' ORDER BY lectID DESC LIMIT 1";
 $check_res = mysqli_query($conn, $check_sql);

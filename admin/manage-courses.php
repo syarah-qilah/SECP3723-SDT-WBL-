@@ -3,7 +3,7 @@ session_start();
 require_once '../config/database.php';
 require_once '../includes/functions.php';
 
-// 1. SECURITY CHECK: Admin Only
+
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'Admin') {
     header("Location: ../auth/login.php");
     exit();
@@ -11,26 +11,24 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'Admin') {
 
 $activePage = 'courses';
 
-// 2. FETCH ALL COURSES (FIXED QUERY)
-// We join Course -> Course_Lecturer -> Lecturer -> USER (to get the name)
+
 $sql = "SELECT c.*, u.name as lect_name, l.lectID,
         (SELECT COUNT(*) FROM Registration r WHERE r.c_code = c.c_code AND r.regisStat = 'Approved') as enrolled
         FROM Course c
         LEFT JOIN course_lecturer cl ON c.c_code = cl.c_code
         LEFT JOIN Lecturer l ON cl.lectID = l.lectID
-        LEFT JOIN User u ON l.username = u.username  -- Added this JOIN to get the name
+        LEFT JOIN User u ON l.username = u.username 
         ORDER BY c.c_code ASC";
 $courses_res = mysqli_query($conn, $sql);
 
-// 3. FETCH ALL LECTURERS (FIXED QUERY)
-// We also need to join User here for the dropdown list
+
 $lect_sql = "SELECT l.lectID, u.name 
              FROM Lecturer l 
              JOIN User u ON l.username = u.username 
              ORDER BY u.name ASC";
 $lect_res = mysqli_query($conn, $lect_sql);
 
-// Store lecturers in an array
+
 $lecturers = [];
 if ($lect_res && mysqli_num_rows($lect_res) > 0) {
     while($row = mysqli_fetch_assoc($lect_res)) {
@@ -322,13 +320,13 @@ include 'sidebar.php';
         document.body.style.overflow = 'auto';
     }
 
-    // --- EDIT MODAL (THE FIX) ---
+    // --- EDIT MODAL ---
     function openEditModal(code, name, sem, credit, max, lectID, schedule) {
         // 1. Open the modal
         document.getElementById('editCourseModal').classList.add('active');
         
         // 2. Populate the fields with existing data
-        document.getElementById('edit_original_code').value = code; // Hidden field to track ID
+        document.getElementById('edit_original_code').value = code;
         document.getElementById('edit_course_code').value = code;
         document.getElementById('edit_course_name').value = name;
         document.getElementById('edit_semester').value = sem;

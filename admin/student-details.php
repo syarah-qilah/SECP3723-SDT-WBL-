@@ -3,7 +3,7 @@ $activePage = 'students';
 include '../includes/header.php'; 
 include 'sidebar.php'; 
 
-// Simulate fetching ID (In real app, query DB)
+// Simulate fetching ID 
 $student_id = isset($_GET['id']) ? $_GET['id'] : 'S2024006';
 ?>
 

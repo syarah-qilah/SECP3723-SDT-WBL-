@@ -51,8 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         if (mysqli_query($conn, $sql_student)) {
             
-            // --- NEW: SEND EMAIL HERE ---
-            // We pass the Name, Email, Password, and Matric No (as the ID)
+          
             $emailSent = sendCredentialsEmail($name, $email, $raw_password, $matric);
 
             if($emailSent) {
@@ -60,8 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             } else {
                 $_SESSION['msg'] = "Student added, but <strong>Email Failed</strong> to send.";
             }
-            // -----------------------------
-
+          
         } else {
             // Rollback: Delete the User if Student insert fails
             mysqli_query($conn, "DELETE FROM User WHERE username = '$username'");

@@ -3,13 +3,12 @@ session_start();
 require_once '../config/database.php';
 require_once '../includes/functions.php';
 
-// 1. SECURITY CHECK
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'Admin') {
     header("Location: ../auth/login.php");
     exit();
 }
 
-// 2. CHECK IF ID IS PROVIDED
+
 if (!isset($_GET['id'])) {
     header("Location: manage-student.php");
     exit();
@@ -17,8 +16,6 @@ if (!isset($_GET['id'])) {
 
 $matric = mysqli_real_escape_string($conn, $_GET['id']);
 
-// 3. FETCH STUDENT PROFILE
-// We join Student + User tables to get full details
 $stu_sql = "SELECT s.*, u.name, u.email, u.faculty 
             FROM Student s 
             JOIN User u ON s.username = u.username 
@@ -32,7 +29,7 @@ if (!$student) {
     exit();
 }
 
-// 4. FETCH REGISTERED COURSES
+
 $course_sql = "SELECT r.*, c.c_name, c.section, c.c_credit 
                FROM Registration r 
                JOIN Course c ON r.c_code = c.c_code 

@@ -18,13 +18,13 @@ function sendCredentialsEmail($name, $email, $raw_password, $lecturer_id) {
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';       
         $mail->SMTPAuth   = true;                   
-        $mail->Username   = 'syarahaqilah@graduate.utm.my'; // <--- PUT YOUR GMAIL HERE
-        $mail->Password   = 'hwvm vwiv rmnv iuoj';    // <--- PUT APP PASSWORD HERE
+        $mail->Username   = 'syarahaqilah@graduate.utm.my'; 
+        $mail->Password   = 'hwvm vwiv rmnv iuoj';   
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port       = 587;
 
         // --- RECIPIENTS ---
-        $mail->setFrom('syarahaqilah@graduate.utm.my', 'School Admin'); // <--- PUT YOUR GMAIL HERE
+        $mail->setFrom('syarahaqilah@graduate.utm.my', 'School Admin'); 
         $mail->addAddress($email, $name);     
 
         // --- CONTENT ---

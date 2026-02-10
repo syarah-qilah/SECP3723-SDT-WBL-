@@ -14,7 +14,7 @@ $current_session = "2025/2026";
 $current_semester_label = get_current_semester();
 
 // 1. FETCH CURRENT ASSIGNED COURSES
-// We join Course and course_lecturer to find what this specific lecturer is teaching now
+
 $current_sql = "SELECT c.*, 
                 (SELECT COUNT(*) FROM Registration WHERE c_code = c.c_code AND regisStat = 'Approved') as enrolled_count
                 FROM Course c

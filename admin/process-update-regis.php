@@ -30,13 +30,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (mysqli_query($conn, $sql)) {
         
         // 2. Update Lecturer Assignment
-        // First, remove any existing assignment for this course
-        $del_link = "DELETE FROM course_lecturer WHERE c_code = '$original_code'"; // Use original code in case code changed
+       
+        $del_link = "DELETE FROM course_lecturer WHERE c_code = '$original_code'"; 
         mysqli_query($conn, $del_link);
 
-        // Then, add the new assignment if a lecturer is selected
+       
         if (!empty($lect_id)) {
-            // Use the NEW code in case the user changed the course code
             $new_link = "INSERT INTO course_lecturer (lectID, c_code) VALUES ('$lect_id', '$code')";
             mysqli_query($conn, $new_link);
         }

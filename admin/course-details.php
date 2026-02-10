@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // RELOAD TO CANCEL
+    
     cancelBtn.addEventListener('click', function() {
         location.reload(); 
     });
