@@ -1,20 +1,25 @@
 <?php
-// 1. Load PHPMailer Library
-use PHPMailer\PHPMailer;
-use PHPMailer\Exception;
-use PHPMailer\SMTP;
+// 1. Load PHPMailer Library correctly
+// FIX: The Namespace is 'PHPMailer\PHPMailer\Class', not just 'PHPMailer\Class'
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
 
-require '../includes/PHPMailer/Exception.php';
-require '../includes/PHPMailer/PHPMailer.php';
-require '../includes/PHPMailer/SMTP.php';
+// FIX: Use __DIR__ to find files relative to THIS file, not the admin folder.
+// This assumes your PHPMailer folder is inside the 'includes' folder.
+require __DIR__ . '/PHPMailer/Exception.php';
+require __DIR__ . '/PHPMailer/PHPMailer.php';
+require __DIR__ . '/PHPMailer/SMTP.php';
 
 // 2. Define the Function
 function sendCredentialsEmail($name, $email, $raw_password, $lecturer_id) {
     
+    // Create a new instance
     $mail = new PHPMailer(true);
 
     try {
         // --- SERVER SETTINGS ---
+        // $mail->SMTPDebug = SMTP::DEBUG_SERVER; // Uncomment this line if you need deep debugging logs
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';       
         $mail->SMTPAuth   = true;                   
@@ -45,9 +50,10 @@ function sendCredentialsEmail($name, $email, $raw_password, $lecturer_id) {
         return true; 
 
     } catch (Exception $e) {
-        // DELETE the old "return false;" and use this instead:
+        // FIX: Display the error so we can fix it
         echo "<b>MAILER ERROR:</b> " . $mail->ErrorInfo; 
-        die(); // Stop the script so you can read the error
+        // return false; // Keep this commented out until it works
+        die(); 
     }
 }
 ?>
