@@ -45,7 +45,9 @@ function sendCredentialsEmail($name, $email, $raw_password, $lecturer_id) {
         return true; 
 
     } catch (Exception $e) {
-        return false; 
-    }
+    // This will echo the exact error to the screen so you can see it
+    echo "Mailer Error: " . $mail->ErrorInfo; 
+    return false; 
+}
 }
 ?>
