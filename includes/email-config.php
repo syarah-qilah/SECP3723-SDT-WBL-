@@ -2,11 +2,11 @@
 function sendCredentialsEmail($name, $email, $raw_password, $lecturer_id) {
     
     // Get API key from environment variable (Railway) or hardcode for testing
-    $api_key = getenv('RESEND_API_KEY') ?: 're_your_api_key_here'; // Replace if testing locally
+    $api_key = getenv('RESEND_API_KEY') ?: 're_bfsPxkdi_MyTsTzqzuoRWPquYos95bqHa'; // Replace if testing locally
     
     // Prepare email data
     $data = [
-        'from' => 'School Admin <onboarding@resend.dev>',
+        'from' => 'School Admin <syarahaqilah@graduate.utm.my>',
         'to' => [$email],
         'subject' => 'Your Account Credentials',
         'html' => "
