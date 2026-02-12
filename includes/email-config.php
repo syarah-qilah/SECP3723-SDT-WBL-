@@ -1,4 +1,5 @@
 <?php
+// 1. Load PHPMailer Library
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
@@ -7,24 +8,23 @@ require 'PHPMailer/Exception.php';
 require 'PHPMailer/PHPMailer.php';
 require 'PHPMailer/SMTP.php';
 
-$mail = new PHPMailer(true);
+// 2. Define the Function
+function sendCredentialsEmail($name, $email, $raw_password, $lecturer_id) {
+    
+    $mail = new PHPMailer(true);
 
-try {
-    // Server settings
-    $mail->isSMTP();
-    $mail->Host       = 'smtp.gmail.com';
-    $mail->SMTPAuth   = true;
-    $mail->Username   = 'syarahaqilah@graduate.utm.my'; // Your Gmail
-    $mail->Password   = 'hwvm vwiv rmnv iuoj';     // 16-character app password
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    $mail->Port       = 587;
-    
-    // Timeout settings - important for Railway
-    $mail->Timeout    = 30;
-    $mail->SMTPKeepAlive = false;
-    
-    // Sender and recipient
-    $mail->setFrom('syarahaqilah@graduate.utm.my', 'School Admin'); 
+    try {
+        // --- SERVER SETTINGS ---
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.gmail.com';       
+        $mail->SMTPAuth   = true;                   
+        $mail->Username   = 'syarahaqilah@graduate.utm.my'; 
+        $mail->Password   = 'hwvm vwiv rmnv iuoj';   
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port       = 2525;
+
+        // --- RECIPIENTS ---
+        $mail->setFrom('syarahaqilah@graduate.utm.my', 'School Admin'); 
         $mail->addAddress($email, $name);     
 
         // --- CONTENT ---
@@ -47,4 +47,5 @@ try {
     } catch (Exception $e) {
         return false; 
     }
-?>    
+}
+?>
