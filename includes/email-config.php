@@ -21,12 +21,15 @@ function sendCredentialsEmail($name, $email, $raw_password, $lecturer_id) {
         // --- SERVER SETTINGS ---
         // $mail->SMTPDebug = SMTP::DEBUG_SERVER; // Uncomment this line if you need deep debugging logs
         $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';       
+        $mail->Host       = 'smtp.gmail.com'; 
         $mail->SMTPAuth   = true;                   
         $mail->Username   = 'syarahaqilah@graduate.utm.my'; 
         $mail->Password   = 'hwvm vwiv rmnv iuoj';   
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port       = 587;
+
+        
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; 
+        
+        $mail->Port       = 465;
 
         // --- RECIPIENTS ---
         $mail->setFrom('syarahaqilah@graduate.utm.my', 'School Admin'); 
