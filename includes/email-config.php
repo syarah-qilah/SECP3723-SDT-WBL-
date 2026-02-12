@@ -29,7 +29,7 @@ function sendCredentialsEmail($name, $email, $raw_password, $lecturer_id) {
 
         // --- CONTENT ---
         $mail->isHTML(true);
-        $mail->Subject = 'Your Lecturer Account Credentials';
+        $mail->Subject = 'Your Account Credentials';
         
         $mail->Body    = "
             <h3>Welcome to the Faculty, $name!</h3>
