@@ -17,19 +17,29 @@ function sendCredentialsEmail($name, $email, $raw_password, $lecturer_id) {
     // Create a new instance
     $mail = new PHPMailer(true);
 
-    try {
+   try {
         // --- SERVER SETTINGS ---
-        // $mail->SMTPDebug = SMTP::DEBUG_SERVER; // Uncomment this line if you need deep debugging logs
         $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com'; 
+        
+        // FIX 1: Force IPv4 by converting the hostname to an IP address immediately
+        $mail->Host       = gethostbyname('smtp.gmail.com'); 
+        
         $mail->SMTPAuth   = true;                   
         $mail->Username   = 'syarahaqilah@graduate.utm.my'; 
         $mail->Password   = 'hwvm vwiv rmnv iuoj';   
+        
+        // FIX 2: Use TLS on Port 587 (Standard for "insecure" IP connections)
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port       = 587;
 
-        
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; 
-        
-        $mail->Port       = 465;
+        // FIX 3: Disable strict SSL checks (Required because we are using an IP, not a domain)
+        $mail->SMTPOptions = array(
+            'ssl' => array(
+                'verify_peer'       => false,
+                'verify_peer_name'  => false,
+                'allow_self_signed' => true
+            )
+        );
 
         // --- RECIPIENTS ---
         $mail->setFrom('syarahaqilah@graduate.utm.my', 'School Admin'); 
@@ -50,8 +60,8 @@ function sendCredentialsEmail($name, $email, $raw_password, $lecturer_id) {
         ";
 
         $mail->send();
-        return true; 
-
+        return true;
+        
     } catch (Exception $e) {
         // FIX: Display the error so we can fix it
         echo "<b>MAILER ERROR:</b> " . $mail->ErrorInfo; 
