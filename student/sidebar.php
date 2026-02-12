@@ -12,22 +12,22 @@
         </div>
         
         <nav class="sidebar-menu">
-            <a href="/smsCopy/student/dashboard.php" class="menu-item <?php echo ($activePage == 'dashboard') ? 'active' : ''; ?>">
+            <a href="../student/dashboard.php" class="menu-item <?php echo ($activePage == 'dashboard') ? 'active' : ''; ?>">
                 <span class="menu-item-icon"><i class="fas fa-chart-pie"></i></span>
                 <span>Dashboard</span>
             </a>
 
-            <a href="/smsCopy/student/register-course.php" class="menu-item <?php echo ($activePage == 'register') ? 'active' : ''; ?>">
+            <a href="../student/register-course.php" class="menu-item <?php echo ($activePage == 'register') ? 'active' : ''; ?>">
                 <span class="menu-item-icon"><i class="fas fa-file-signature"></i></span>
                 <span>Register Course</span>
             </a>
 
-            <a href="/smsCopy/student/my-courses.php" class="menu-item <?php echo ($activePage == 'courses') ? 'active' : ''; ?>">
+            <a href="../student/my-courses.php" class="menu-item <?php echo ($activePage == 'courses') ? 'active' : ''; ?>">
                 <span class="menu-item-icon"><i class="fas fa-book"></i></span>
                 <span>My Courses</span>
             </a>
 
-            <a href="/smsCopy/student/profile.php" class="menu-item <?php echo ($activePage == 'profile') ? 'active' : ''; ?>">
+            <a href="../student/profile.php" class="menu-item <?php echo ($activePage == 'profile') ? 'active' : ''; ?>">
                 <span class="menu-item-icon"><i class="fas fa-user"></i></span>
                 <span>My Profile</span>
             </a>

@@ -12,22 +12,22 @@
         </div>
         
         <nav class="sidebar-menu">
-            <a href="/smsCopy/lecturer/dashboard.php" class="menu-item">
+            <a href="../lecturer/dashboard.php" class="menu-item">
                 <span class="menu-item-icon"><i class="fas fa-th-large"></i></span>
                 <span>Dashboard</span>
             </a>
 
-            <a href="/smsCopy/lecturer/my-courses.php" class="menu-item">
+            <a href="../lecturer/my-courses.php" class="menu-item">
                 <span class="menu-item-icon"><i class="fas fa-book-reader"></i></span>
                 <span>My Courses</span>
             </a>
 
-            <a href="/smsCopy/lecturer/student-list.php" class="menu-item">
+            <a href="../lecturer/student-list.php" class="menu-item">
                 <span class="menu-item-icon"><i class="fas fa-users"></i></span>
                 <span>Student List </span>
             </a>
 
-            <a href="/smsCopy/lecturer/profile.php" class="menu-item">
+            <a href="../lecturer/profile.php" class="menu-item">
                 <span class="menu-item-icon"><i class="fas fa-id-card"></i></span>
                 <span>My Profile</span>
             </a>
