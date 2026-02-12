@@ -1,8 +1,8 @@
 <?php
 // 1. Load PHPMailer Library
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer;
+use PHPMailer\Exception;
+use PHPMailer\SMTP;
 
 require '../includes/PHPMailer/Exception.php';
 require '../includes/PHPMailer/PHPMailer.php';
@@ -45,9 +45,9 @@ function sendCredentialsEmail($name, $email, $raw_password, $lecturer_id) {
         return true; 
 
     } catch (Exception $e) {
-    // This will echo the exact error to the screen so you can see it
-    echo "Mailer Error: " . $mail->ErrorInfo; 
-    return false; 
-}
+        // DELETE the old "return false;" and use this instead:
+        echo "<b>MAILER ERROR:</b> " . $mail->ErrorInfo; 
+        die(); // Stop the script so you can read the error
+    }
 }
 ?>
